@@ -1,0 +1,105 @@
+get from web to csv to date|name|amount|category
+
+add category in program by looping through
+
+have 1 large list of dict
+
+loop through those and get totals for each category
+get current month/year
+
+add all into list of dicts with keys month|year|category|total
+
+
+
+
+
+
+
+
+Web app
+--------
+main page display main trends
+secondary page per month with ability to get all transactions per category
+cateogries page (or just add in admin page)
+upload page/pop up secondary
+probably parse files using pandas
+
+
+
+Import Data
+-----------
+insert file, select file type
+if it parses correctly, show data in table format date | name | amount
+have user select a dropdown from current available categories for each entry
+
+Allow Adding Data
+-----------------
+When importing data, allow user to add rows to the table and manually input the data as well as remove data from any row in the table
+
+
+
+DB Tables 
+---------
+transaction table - Date (or month and day as numbers) | name as varchar(255) | amount as float | category as varchar(50)
+cagtegories table - id as int | category as varchar(50)
+(potential) Totals table - Month as int | year as int | category as varchar(50) | total as float
+
+
+Categories
+----------
+groc
+food
+gab
+dan
+gas
+shtf
+subs
+health
+util
+home
+an
+
+
+
+
+
+
+
+
+
+
+
+actual notes from the videos
+---------------------------
+django-admin startproject budget_project
+creates new project
+
+main directory -> manage.py and lower directory w/ same name
+
+in main directory -> python manage.py startapp budget 
+creates budget app in that directory w/ all its shit and a SQLite db
+
+views.py
+from Django.http import HttpResponse
+
+create home method with request arg. Will return a render type thing
+
+in app directory (NOT project directory), create urls.py and copy from project urls.py
+import views into urls.py. 
+this means that you want to have a list of path() guys with the first arg beign the path and hte second being the method that handles it. third arg is name='budget-home' or something unique
+
+project urls
+import Django urls include too
+add another path() object with first beign like 'budget/' and the second being include('budget.urls')
+to connect shit here
+
+
+Templates
+in budget app directory -> create templates directory
+in tempaltes create budget directory
+in that create .html files
+
+in budget app, look for apps.py. should have a BudgetConfig type class
+Add thjat to project settings.py  INSTALLED_APPS 'budget.apps.BudgetConfig' type shit
+
+in views.py, change return to use render({{path to template file budget/home.html}}

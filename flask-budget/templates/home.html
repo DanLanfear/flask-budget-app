@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-  </head>
-  <body>
+{% extends "base.html" %}
+{% block content %}
     {% for trans in transactions %}
-    <h1>{{ trans.name }}</h1>
-    <p>For {{ trans.amount }} on {{ trans.date }}</p>
+        <h1>{{ trans.name }}</h1>
+        <p>For {{ trans.amount }} on {{ trans.date }}</p>
     {% endfor %}
-  </body>
-</html>
+{% endblock content %}

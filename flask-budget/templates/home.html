@@ -1,7 +1,20 @@
-{% extends "base.html" %}
-{% block content %}
-    {% for trans in transactions %}
-        <h1>{{ trans.name }}</h1>
-        <p>For {{ trans.amount }} on {{ trans.date }}</p>
-    {% endfor %}
+{% extends "base.html" %} {% block content %}
+<h1>Welcome to Dan's Budgeting Tracker!</h1>
+<p>
+  Right now, there's not much here, but here are some goals for this
+  application:
+</p>
+<ul>
+  <li>main page display main trends</li>
+  <li>secondary page with all transactions per category per month</li>
+  <li>Page to edit add, and view categories for the transactions</li>
+  <li>upload page either on its own or within the transactions page</li>
+</ul>
+<br>
+<h3>Table design so far</h3>
+<p>
+  transaction table - Date (or month and day as numbers) | name as varchar(255)
+  | amount as float | category as varchar(50)
+</p>
+<p>categories table - id as int | category as varchar(50)</p>
 {% endblock content %}

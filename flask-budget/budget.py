@@ -19,9 +19,11 @@ transactions = [
 
 @app.route("/")
 def home():
-    return render_template('home.html', transactions=transactions)
+    return render_template('home.html')
 
-
+@app.route("/transactions")
+def manage_transactions():
+    return render_template('transactions.html', transactions=transactions)
 
 
 if __name__ == '__main__':

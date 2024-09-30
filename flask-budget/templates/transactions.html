@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for trans in transactions %}
+        <h1>{{ trans.name }}</h1>
+        <p>For {{ trans.amount }} on {{ trans.date }}</p>
+    {% endfor %}
+{% endblock content %}

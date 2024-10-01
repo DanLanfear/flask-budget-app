@@ -14,3 +14,8 @@ class ExampleForm(FlaskForm):
                             validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
     remember = BooleanField('Remember Me')
+
+
+class CategoryForm(FlaskForm):
+    category = StringField('Category', 
+                           validators=[DataRequired()])

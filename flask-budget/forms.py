@@ -19,3 +19,5 @@ class ExampleForm(FlaskForm):
 class CategoryForm(FlaskForm):
     category = StringField('Category', 
                            validators=[DataRequired()])
+    submit = SubmitField('Add Category')
+    

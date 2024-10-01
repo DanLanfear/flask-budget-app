@@ -1,7 +1,8 @@
 from flask import Flask, render_template
+from forms import CategoryForm
 app = Flask(__name__)
 
-# app.config['SECRET_KEY'] = '1da3698b08a11964197e690e97054059'
+app.config['SECRET_KEY'] = '1da3698b08a11964197e690e97054059'
 
 transactions = [
     {
@@ -26,6 +27,10 @@ def home():
 def manage_transactions():
     return render_template('transactions.html', transactions=transactions)
 
+@app.route("/categories")
+def manage_categories():
+    form = CategoryForm()
+    return render_template('categories.html',title='Categories', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)

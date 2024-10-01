@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content-section d-flex flex-column gap-3">
+    <form class="d-flex flex-column gap-3" method="POST" action="">
+        {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Add a spending category</legend>
+            <div class="form-group">
+                {{ form.category.label(class="form-control-label") }}
+                {{ form.category(class="form-control form-control-lg") }}
+            </div>
+          </fieldset>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+    </form>
+</div>
+{% endblock content %}

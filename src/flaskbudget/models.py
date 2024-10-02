@@ -1,5 +1,5 @@
 from datetime import datetime
-from budget import db
+from flaskbudget import db
 
 
 class Category(db.Model):

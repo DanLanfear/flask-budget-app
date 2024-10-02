@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect
-from budget import app
-from budget.models import Transaction, Category
-from budget.forms import CategoryForm
+from flaskbudget import app
+from flaskbudget.models import Transaction, Category
+from flaskbudget.forms import CategoryForm
 
 
 

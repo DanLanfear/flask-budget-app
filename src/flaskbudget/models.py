@@ -15,7 +15,7 @@ class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default = datetime.now)
     name = db.Column(db.String(255), nullable=False)
-    amount = db.Column(db.Integer, nullable=False)
+    amount = db.Column(db.Float, nullable=False)
     # uses table name
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
 

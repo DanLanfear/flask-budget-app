@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from budget.models import Category
 
 
 class ExampleForm(FlaskForm):
@@ -20,4 +21,10 @@ class CategoryForm(FlaskForm):
     category = StringField('Category', 
                            validators=[DataRequired()])
     submit = SubmitField('Add Category')
+
+    def validate_category(self, category_input):
+        category = Category.query.filter_by(category=category_input).first()
+
+        if category:
+            raise  ValidationError('Category already exists')
     

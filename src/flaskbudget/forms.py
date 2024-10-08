@@ -23,7 +23,7 @@ class CategoryForm(FlaskForm):
     submit = SubmitField('Add Category')
 
     def validate_category(self, category_input):
-        category = Category.query.filter_by(category=category_input).first()
+        category = Category.query.filter_by(category=category_input.data).first()
 
         if category:
             raise  ValidationError('Category already exists')

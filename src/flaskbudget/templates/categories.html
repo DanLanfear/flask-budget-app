@@ -7,12 +7,38 @@
             <legend class="border-bottom mb-4">Add a spending category</legend>
             <div class="form-group">
                 {{ form.category.label(class="form-control-label") }}
-                {{ form.category(class="form-control form-control-lg") }}
+
+                {% if form.category.errors %}
+                  {{ form.category(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.category.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ form.category(class="form-control form-control-lg") }}
+                {% endif %}
             </div>
           </fieldset>
           <div class="form-group">
             {{ form.submit(class="btn btn-outline-info") }}
           </div>
     </form>
+</div>
+<div class="content-section">
+  {% if categories %}
+  <table class="table table-hover table-striped-columns">
+    <thead>Spending Categories</thead>
+    <tbody class="table-group-divider">
+      {% for category in categories %}
+      <tr>
+        <td>{{ category.category }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>There are no categories. Go ahead and add one!</p>
+  {% endif %}
 </div>
 {% endblock content %}

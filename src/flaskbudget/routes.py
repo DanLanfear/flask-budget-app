@@ -1,5 +1,5 @@
 from flask import render_template, url_for, flash, redirect
-from flaskbudget import app
+from flaskbudget import app, db
 from flaskbudget.models import Transaction, Category
 from flaskbudget.forms import CategoryForm
 
@@ -31,6 +31,11 @@ def manage_transactions():
 @app.route("/categories", methods=['GET', 'POST'])
 def manage_categories():
     form = CategoryForm()
+    categories = Category.query.all()
     if form.validate_on_submit():
+        category = Category(category=form.category.data)
+        db.session.add(category)
+        db.session.commit()
         flash(f'Category {form.category.data} created', 'success')
-    return render_template('categories.html',title='Categories', form=form)
+        return redirect(url_for('manage_categories'))
+    return render_template('categories.html',title='Categories', form=form, categories=categories)

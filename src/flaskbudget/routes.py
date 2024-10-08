@@ -28,7 +28,9 @@ def home():
 def manage_transactions():
     return render_template('transactions.html', transactions=transactions)
 
-@app.route("/categories")
+@app.route("/categories", methods=['GET', 'POST'])
 def manage_categories():
     form = CategoryForm()
+    if form.validate_on_submit():
+        flash(f'Category {form.category.data} created', 'success')
     return render_template('categories.html',title='Categories', form=form)

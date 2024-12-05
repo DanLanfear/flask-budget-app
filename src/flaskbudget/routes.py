@@ -39,3 +39,11 @@ def manage_categories():
         flash(f'Category {form.category.data} created', 'success')
         return redirect(url_for('manage_categories'))
     return render_template('categories.html',title='Categories', form=form, categories=categories)
+
+@app.route("/categories/<category_id>", methods=['POST'])
+def delete_category(category_id):
+    category = Category.query.get_or_404(category_id)
+    db.session.delete(category)
+    db.session.commit()
+    flash(f'Category {category.category} deleted', 'success')
+    return redirect(url_for('manage_categories'))

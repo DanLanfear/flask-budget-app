@@ -33,10 +33,10 @@ def manage_categories():
     form = CategoryForm()
     categories = Category.query.all()
     if form.validate_on_submit():
-        category = Category(category=form.category.data)
+        category = Category(name=form.name.data)
         db.session.add(category)
         db.session.commit()
-        flash(f'Category {form.category.data} created', 'success')
+        flash(f'Category {form.name.data} created', 'success')
         return redirect(url_for('manage_categories'))
     return render_template('categories.html',title='Categories', form=form, categories=categories)
 
@@ -45,5 +45,5 @@ def delete_category(category_id):
     category = Category.query.get_or_404(category_id)
     db.session.delete(category)
     db.session.commit()
-    flash(f'Category {category.category} deleted', 'success')
+    flash(f'Category {category.name} deleted', 'success')
     return redirect(url_for('manage_categories'))

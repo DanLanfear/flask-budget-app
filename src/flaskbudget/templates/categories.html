@@ -5,16 +5,16 @@
     <fieldset class="form-group">
       <legend class="border-bottom mb-4">Add a Spending Category</legend>
       <div class="form-group">
-        {{ form.category.label(class="form-control-label") }} 
-          {% if form.category.errors %} 
-            {{ form.category(class="form-control form-control-lg is-invalid") }}
+        {{ form.name.label(class="form-control-label") }} 
+          {% if form.name.errors %} 
+            {{ form.name(class="form-control form-control-lg is-invalid") }}
               <div class="invalid-feedback">
-                {% for error in form.category.errors %}
+                {% for error in form.name.errors %}
                   <span>{{ error }}</span>
                 {% endfor %}
               </div>
           {% else %}
-           {{ form.category(class="form-control form-control-lg") }} 
+           {{ form.name(class="form-control form-control-lg") }} 
           {% endif %}
       </div>
     </fieldset>
@@ -36,7 +36,7 @@
     <tbody class="table-group-divider">
       {% for category in categories %}
       <tr>
-        <td class="d-flex justify-content-between">{{ category.category }} 
+        <td class="d-flex justify-content-between">{{ category.name }} 
           <form action="{{ url_for('delete_category', category_id=category.id)}}" method="POST">
             <input class="btn btn-danger" type="submit" value="Delete">
           </form>
